@@ -42,6 +42,12 @@ import org.moeaframework.util.TypedProperties;
  * Tests the {@link NSGAIII} class.
  */
 public class NSGAIIITest {
+
+	@Test
+//	@Ignore("Must download reference sets from http://web.ntnu.edu.tw/~tcchiang/publications/nsga3cpp/nsga3cpp.htm")
+	public void test_single() throws IOException {
+		evaluate(new DTLZ1(3), 400, new NondominatedPopulation(PopulationIO.readObjectives(new File("nsga3cpp1.20/PF/DTLZ1(3)-PF.txt"))));
+	}
 	
 	/**
 	 * Replicates the unscaled and scaled DTLZ experiments performed in the
