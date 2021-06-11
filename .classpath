@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry excluding="book/|book/" including="META-INF/" kind="src" path=""/>
+	<classpathentry kind="src" path="adaptivesearch"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="examples"/>
 	<classpathentry kind="src" path="book"/>

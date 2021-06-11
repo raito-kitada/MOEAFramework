@@ -1,0 +1,1 @@
+# CPSD = Constant Parameter Space Discretization
