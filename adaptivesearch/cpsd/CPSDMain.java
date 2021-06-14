@@ -18,6 +18,7 @@ import org.moeaframework.core.comparator.CrowdingComparator;
 import org.moeaframework.core.comparator.ParetoDominanceComparator;
 import org.moeaframework.core.operator.GAVariation;
 import org.moeaframework.core.operator.TournamentSelection;
+import org.moeaframework.core.operator.real.CPSD;
 import org.moeaframework.core.operator.real.PM;
 import org.moeaframework.core.operator.real.SBX;
 
@@ -33,7 +34,7 @@ public class CPSDMain {
 
 	private static int max_evaluation = npop * ngen;
  	
-	private static String[] algorithmName = {"MOEAD"};
+	private static String[] algorithmName = {"NSGAIII"};
 	private static String[] problemName = {"DTLZ2"};
 	
 	private static void opt(int trial) {
@@ -95,9 +96,12 @@ public class CPSDMain {
         			
         			/**
         			 * Define the crossover and mutation operator.
+        			 * 
+        			 * disable swapping variables in SBX operator to remain consistent with
+        			 * Deb's implementation
         			 */
         			Variation variation = new GAVariation(
-        					new SBX(1.0, 25.0),
+        					new SBX(1.0, 25.0, false, true),
         					new PM(1.0 / nvar, 30.0)
         					);
         			((GAVariation)variation).appendOperator(fd);

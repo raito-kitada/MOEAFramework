@@ -1,4 +1,4 @@
-package cpsd;
+package org.moeaframework.core.operator.real;
 
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.Variable;
