@@ -23,7 +23,9 @@ import java.util.Arrays;
 
 import org.moeaframework.core.Algorithm;
 import org.moeaframework.core.Problem;
+import org.moeaframework.core.Settings;
 import org.moeaframework.core.Solution;
+import org.moeaframework.util.ParallelEvaluator;
 
 /**
  * Abstract class providing default implementations for several
@@ -78,8 +80,12 @@ public abstract class AbstractAlgorithm implements Algorithm {
 	 * @param solutions the solutions to evaluate
 	 */
 	public void evaluateAll(Iterable<Solution> solutions) {
-		for (Solution solution : solutions) {
-			evaluate(solution);
+		if (Settings.getEvaluateAllInParallelEnabled()) {
+			numberOfEvaluations += ParallelEvaluator.evaluateAllinParallel(solutions, problem);
+		} else {
+			for (Solution solution : solutions) {
+				evaluate(solution);
+			}		
 		}
 	}
 	

@@ -213,6 +213,12 @@ public class Settings {
 	 */
 	public static final String KEY_EXTERNAL_PROBLEM_DEBUGGING = KEY_PREFIX + 
 			"problem.external_problem_debugging";
+
+	/**
+	 * The property key for enabling to evaluate solutions in parallel
+	 */
+	public static final String KEY_EVALUATE_ALL_IN_PARALLEL = KEY_PREFIX +
+			"problem.evaluateall_in_parallel";
 	
 	/**
 	 * The property key for listing the allowed packages that can be
@@ -223,7 +229,7 @@ public class Settings {
 	@Deprecated
 	public static final String KEY_ALLOWED_PACKAGES = KEY_PREFIX +
 			"allowed_packages";
-	
+		
 	/**
 	 * Loads the properties.
 	 */
@@ -639,6 +645,16 @@ public class Settings {
 	public static boolean getExternalProblemDebuggingEnabled() {
 		return PROPERTIES.getBoolean(KEY_EXTERNAL_PROBLEM_DEBUGGING, false);
 	}
+
+	/**
+	 * Returns {@code true} when enabling to evaluate solutions in parallel.
+	 * 
+	 * @return {@code true} if solutions are evaluated in parallel;
+	 *         {@code false} otherwise
+	 */
+	public static boolean getEvaluateAllInParallelEnabled() {
+		return PROPERTIES.getBoolean(KEY_EVALUATE_ALL_IN_PARALLEL, false);
+	}	
 	
 	/**
 	 * Returns the allowed packages that can be instrumented.  By default, only
