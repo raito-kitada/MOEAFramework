@@ -15,3 +15,5 @@ output/
 pop_vars_eval.txt
 pop_objs_eval.txt
 pop_cons_eval.txt
+*.log
+*.idx
