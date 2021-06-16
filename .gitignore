@@ -7,6 +7,7 @@ test-results/
 javadoc/
 maven/
 .settings/
+guide_output/
 *.exe
 *~
 .pydevproject
