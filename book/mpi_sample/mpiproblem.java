@@ -6,7 +6,7 @@ import org.moeaframework.problem.AbstractProblem;
 
 public class mpiproblem extends AbstractProblem {
 		private static int nobj = 2;
-		private static int nvar = 2;
+		private static int nvar = 1;
 		private static int ncon = 0;
 		
 		public mpiproblem() {
@@ -28,7 +28,6 @@ public class mpiproblem extends AbstractProblem {
 			Solution solution = new Solution(nvar, nobj, ncon);
 
 			solution.setVariable(0,  EncodingUtils.newReal(0.0, 1.0));
-			solution.setVariable(1,  EncodingUtils.newReal(0.0, 1.0));
 			
 			return solution;
 		}
