@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry including="META-INF/" kind="src" path=""/>
+	<classpathentry kind="src" path="samples"/>
 	<classpathentry kind="src" path="adaptivesearch"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="examples"/>

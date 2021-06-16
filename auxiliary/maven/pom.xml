@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.moeaframework</groupId>
 	<artifactId>moeaframework</artifactId>
-	<version>2.13</version>
+	<version>2.13lab</version>
 	<packaging>jar</packaging>
 
 	<name>MOEA Framework</name>
@@ -25,6 +25,11 @@
 			<id>dhadka</id>
 			<name>David Hadka</name>
 			<email>admin@moeaframework.org</email>
+		</developer>
+		<developer>
+			<id>tatsutatsut</id>
+			<name>Tomoaki Tatsukawa</name>
+			<email>tatsukawa@rs.tus.ac.jp</email>
 		</developer>
 	</developers>
 
