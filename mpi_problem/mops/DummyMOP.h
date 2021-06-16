@@ -20,6 +20,7 @@ public:
 			      vector<double> &obj,
 			      vector<double> &con,
 				  int rank) const;
+
 };
 
 #endif /* DUMMYMOP_H_ */

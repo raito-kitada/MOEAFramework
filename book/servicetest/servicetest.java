@@ -13,7 +13,7 @@ public class servicetest {
 
 		ServiceLoader<AlgorithmProvider> PROVIDERS = ServiceLoader.load(AlgorithmProvider.class);
 		for (AlgorithmProvider provider : PROVIDERS) {
-			System.out.println("Found provider");
+			System.out.println("Found provider"); // jmetal, pisa, etc.
 		}
 	}
 
