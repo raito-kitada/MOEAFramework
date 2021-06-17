@@ -5,7 +5,7 @@ import org.moeaframework.core.Problem;
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.Variation;
 
-public class RandomInitialization2 implements Initialization {
+public class CustomRandomInitialization implements Initialization {
 
 	/**
 	 * The problem.
@@ -29,7 +29,7 @@ public class RandomInitialization2 implements Initialization {
 	 * @param populationSize the initial population size
 	 * @param 
 	 */
-	public RandomInitialization2(Problem problem, int populationSize, Variation unary_operator) {
+	public CustomRandomInitialization(Problem problem, int populationSize, Variation unary_operator) {
 		super();
 		this.problem = problem;
 		this.populationSize = populationSize;

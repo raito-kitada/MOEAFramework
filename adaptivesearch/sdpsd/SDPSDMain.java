@@ -16,10 +16,10 @@ import org.moeaframework.core.operator.TournamentSelection;
 import org.moeaframework.core.operator.real.PM;
 import org.moeaframework.core.operator.real.SBX;
 
-import lab.problem.ProblemFactory;
+import lab.problem.CustomProblemFactory;
 import lab.operator.real.SDPSD;
-import lab.operator.RandomInitialization2;
-import lab.algorithm.AlgorithmFactory;
+import lab.operator.CustomRandomInitialization;
+import lab.algorithm.CustomAlgorithmFactory;
 
 public class SDPSDMain {
 	private static int npop = 100;
@@ -58,13 +58,13 @@ public class SDPSDMain {
                  	/**
                  	 * Define optimization problem
                  	 */
-        			Problem problem = ProblemFactory.getProblem(pName, nobj, nvar, ncon, null);
+        			Problem problem = CustomProblemFactory.getProblem(pName, nobj, nvar, ncon, null);
         	
         			/**
         			 * Create an initial random population.
         			 * The population size(=npop) and the number of digit(=ndigit) are specified here.
         			 */
-        			Initialization initialization = new RandomInitialization2(
+        			Initialization initialization = new CustomRandomInitialization(
         					problem,
         					npop,
         					fd);
@@ -92,7 +92,7 @@ public class SDPSDMain {
         			/**
         			 * Construct the algorithm
         			 */
-        			Algorithm algorithm = AlgorithmFactory.getAlgorithm(
+        			Algorithm algorithm = CustomAlgorithmFactory.getAlgorithm(
         					aName, problem, selection, variation, initialization, null);
         			        			
         			/**

@@ -88,7 +88,7 @@ import org.moeaframework.problem.misc.Viennet3;
 import org.moeaframework.problem.misc.Viennet4;
 import org.moeaframework.util.TypedProperties;
 
-public class ProblemFactory {
+public class CustomProblemFactory {
 	public static Problem getProblem(String name, int nobj, int nvar, int ncon, Properties properties) {
 		name = name.toUpperCase();
 		TypedProperties typedProperties = new TypedProperties(properties);		

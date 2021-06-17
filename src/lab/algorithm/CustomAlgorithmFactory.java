@@ -19,6 +19,7 @@ import org.moeaframework.core.comparator.AggregateConstraintComparator;
 import org.moeaframework.core.comparator.ChainedComparator;
 import org.moeaframework.core.comparator.DominanceComparator;
 import org.moeaframework.core.operator.TournamentSelection;
+import org.moeaframework.core.spi.AlgorithmFactory;
 import org.moeaframework.core.spi.OperatorFactory;
 import org.moeaframework.util.TypedProperties;
 
@@ -26,7 +27,7 @@ import lab.algorithm.NSGAIIPSD;
 /**
  * A provider of standard algorithms. 
  */
-public class AlgorithmFactory {
+public class CustomAlgorithmFactory {
 	public static Algorithm getAlgorithm(
 										String name, 
 										Problem problem, 
@@ -123,8 +124,9 @@ public class AlgorithmFactory {
 						eta,
 						updateUtility);
 
-			}else {
-				return null;
+			} else {
+				return AlgorithmFactory.getInstance().getAlgorithm(
+						name, typedProperties.getProperties(), problem);
 			}
 		} catch (NumberFormatException e) {
 			return null;

@@ -22,9 +22,9 @@ import org.moeaframework.core.operator.TournamentSelection;
 import org.moeaframework.core.operator.real.PM;
 import org.moeaframework.core.operator.real.SBX;
 
-import lab.problem.ProblemFactory;
-import lab.algorithm.AlgorithmFactory;
-import lab.operator.RandomInitialization2;
+import lab.problem.CustomProblemFactory;
+import lab.algorithm.CustomAlgorithmFactory;
+import lab.operator.CustomRandomInitialization;
 import lab.operator.real.CPSD;
 
 public class CPSDMain {
@@ -64,7 +64,7 @@ public class CPSDMain {
                  	/**
                  	 * Define optimization problem
                  	 */
-        			Problem problem = ProblemFactory.getProblem(pName, nobj, nvar, ncon, null);
+        			Problem problem = CustomProblemFactory.getProblem(pName, nobj, nvar, ncon, null);
         	
         			/**
         			 * Construct instrumenter
@@ -84,7 +84,7 @@ public class CPSDMain {
         			 * Create an initial random population.
         			 * The population size(=npop) and the number of digit(=ndigit) are specified here.
         			 */
-        			Initialization initialization = new RandomInitialization2(
+        			Initialization initialization = new CustomRandomInitialization(
         					problem,
         					npop,
         					fd);
@@ -116,7 +116,7 @@ public class CPSDMain {
         			 */
         			Properties properties = new Properties();
 //        			properties.setProperty("use_archive", "1"); // when use archive, set this property.         			
-        			Algorithm algorithm = AlgorithmFactory.getAlgorithm(
+        			Algorithm algorithm = CustomAlgorithmFactory.getAlgorithm(
         					aName, problem, selection, variation, initialization, properties);
         			
         			/**
