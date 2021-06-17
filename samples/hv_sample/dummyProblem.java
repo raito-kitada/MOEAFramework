@@ -1,4 +1,4 @@
-package indicatortest;
+package hv_sample;
 
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.variable.EncodingUtils;

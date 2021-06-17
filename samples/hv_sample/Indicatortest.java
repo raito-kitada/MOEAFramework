@@ -1,4 +1,4 @@
-package indicatortest;
+package hv_sample;
 
 import org.moeaframework.core.NondominatedPopulation;
 import org.moeaframework.core.Problem;
