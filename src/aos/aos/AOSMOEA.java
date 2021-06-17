@@ -179,19 +179,19 @@ public class AOSMOEA extends AbstractEvolutionaryAlgorithm implements IAOS {
                 offspring, parents, population, paretofront, archive,
                 operatorSelector.getOperatorNames());
         operatorSelectionHistory.add(nextOperator, ea.getNumberOfEvaluations());
-        //wakarann {name = operators}
+        
         for (String name : credits1.keySet()) {
             Credit reward1 = new Credit(ea.getNumberOfEvaluations(), credits1.get(name),credits2.get(name));
             operatorSelector.update(reward1, operatorSelector.getOperator(name));
-           // creditHistory.add(operatorSelector.getOperator(name), reward1);
+            creditHistory.add(operatorSelector.getOperator(name), reward1);
         }
         
         //update the quality history
-     //   Map<Variation, Double> currentQualities1 = operatorSelector.getconvQualities();
-       // Map<Variation, Double> currentQualities2 = operatorSelector.getdivQualities();
-     //   for (Variation operator : operatorSelector.getOperators()) {
-           // qualityHistory.add(operator, (currentQualities1.get(operator)+currentQualities2.get(operator)));
-        //}
+        Map<Variation, Double> currentQualities1 = operatorSelector.getconvQualities();
+        Map<Variation, Double> currentQualities2 = operatorSelector.getdivQualities();
+        for (Variation operator : operatorSelector.getOperators()) {
+        	qualityHistory.add(operator, (currentQualities1.get(operator)+currentQualities2.get(operator)));
+        }
         
     }
 

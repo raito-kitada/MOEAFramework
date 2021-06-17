@@ -1,4 +1,6 @@
-package cpsd;
+package lab.problem;
+
+import java.util.Properties;
 
 import org.moeaframework.core.Problem;
 import org.moeaframework.problem.CEC2009.CF1;
@@ -84,10 +86,16 @@ import org.moeaframework.problem.misc.Viennet;
 import org.moeaframework.problem.misc.Viennet2;
 import org.moeaframework.problem.misc.Viennet3;
 import org.moeaframework.problem.misc.Viennet4;
+import org.moeaframework.util.TypedProperties;
 
-public class CustomProblemFactory {
-	public static Problem getProblem(String name, int nobj, int nvar, int ncon) {
+public class ProblemFactory {
+	public static Problem getProblem(String name, int nobj, int nvar, int ncon, Properties properties) {
 		name = name.toUpperCase();
+		TypedProperties typedProperties = new TypedProperties(properties);		
+		
+		// for WFG. k + l = nvar
+		int l = typedProperties.getInt("l", 10);
+		int k = nvar - l;
 		
 		try {
 			if (name.startsWith("DTLZ1")) {
@@ -101,61 +109,61 @@ public class CustomProblemFactory {
 			} else if (name.startsWith("DTLZ7")) {
 				return new DTLZ7(nvar, nobj);
 			} else if (name.startsWith("WFG1")) {
-				return new WFG1(nvar, 10, nobj);
+				return new WFG1(k, l, nobj);
 			} else if (name.startsWith("WFG2")) {
-				return new WFG2(nvar, 10, nobj);
+				return new WFG2(k, l, nobj);
 			} else if (name.startsWith("WFG3")) {
-				return new WFG3(nvar, 10, nobj);
+				return new WFG3(k, l, nobj);
 			} else if (name.startsWith("WFG4")) {
-				return new WFG4(nvar, 10, nobj);
+				return new WFG4(k, l, nobj);
 			} else if (name.startsWith("WFG5")) {
-				return new WFG5(nvar, 10, nobj);
+				return new WFG5(k, l, nobj);
 			} else if (name.startsWith("WFG6")) {
-				return new WFG6(nvar, 10, nobj);
+				return new WFG6(k, l, nobj);
 			} else if (name.startsWith("WFG7")) {
-				return new WFG7(nvar, 10, nobj);
+				return new WFG7(k, l, nobj);
 			} else if (name.startsWith("WFG8")) {
-				return new WFG8(nvar, 10, nobj);
+				return new WFG8(k, l, nobj);
 			} else if (name.startsWith("WFG9")) {
-				return new WFG9(nvar, 10, nobj);
+				return new WFG9(k, l, nobj);
 			} else if (name.equals("ZDT1")) {
-				return new ZDT1();
+				return new ZDT1(nvar);
 			} else if (name.equals("ZDT2")) {
-				return new ZDT2();
+				return new ZDT2(nvar);
 			} else if (name.equals("ZDT3")) {
-				return new ZDT3();
+				return new ZDT3(nvar);
 			} else if (name.equals("ZDT4")) {
-				return new ZDT4();
+				return new ZDT4(nvar);
 			} else if (name.equals("ZDT5")) {
-				return new ZDT5();
+				return new ZDT5(nvar);
 			} else if (name.equals("ZDT6")) {
-				return new ZDT6();
+				return new ZDT6(nvar);
 			} else if (name.equals("UF1")) {
-				return new UF1();
+				return new UF1(nvar);
 			} else if (name.equals("UF2")) {
-				return new UF2();
+				return new UF2(nvar);
 			} else if (name.equals("UF3")) {
-				return new UF3();
+				return new UF3(nvar);
 			} else if (name.equals("UF4")) {
-				return new UF4();
+				return new UF4(nvar);
 			} else if (name.equals("UF5")) {
-				return new UF5();
+				return new UF5(nvar);
 			} else if (name.equals("UF6")) {
-				return new UF6();
+				return new UF6(nvar);
 			} else if (name.equals("UF7")) {
-				return new UF7();
+				return new UF7(nvar);
 			} else if (name.equals("UF8")) {
-				return new UF8();
+				return new UF8(nvar);
 			} else if (name.equals("UF9")) {
-				return new UF9();
+				return new UF9(nvar);
 			} else if (name.equals("UF10")) {
-				return new UF10();
+				return new UF10(nvar);
 			} else if (name.equals("UF11")) {
-				return new UF11();
+				return new UF11(nvar, nobj);
 			} else if (name.equals("UF12")) {
-				return new UF12();
+				return new UF12(nvar, nobj); // DTLZ3, nvar=10 or 30
 			} else if (name.equals("UF13")) {
-				return new UF13();
+				return new UF13(); // WFG1, nvar=30, nobj=5
 			} else if (name.equals("CF1")) {
 				return new CF1();
 			} else if (name.equals("CF2")) {

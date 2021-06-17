@@ -1,11 +1,11 @@
-package sdpsd;
+package lab.operator;
 
 import org.moeaframework.core.Initialization;
 import org.moeaframework.core.Problem;
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.Variation;
 
-public class CustomRandomInitialization implements Initialization {
+public class RandomInitialization2 implements Initialization {
 
 	/**
 	 * The problem.
@@ -29,7 +29,7 @@ public class CustomRandomInitialization implements Initialization {
 	 * @param populationSize the initial population size
 	 * @param 
 	 */
-	public CustomRandomInitialization(Problem problem, int populationSize, Variation unary_operator) {
+	public RandomInitialization2(Problem problem, int populationSize, Variation unary_operator) {
 		super();
 		this.problem = problem;
 		this.populationSize = populationSize;

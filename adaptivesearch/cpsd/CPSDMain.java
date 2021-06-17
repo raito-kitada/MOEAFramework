@@ -2,6 +2,7 @@ package cpsd;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.moeaframework.Instrumenter;
 import org.moeaframework.analysis.collector.Accumulator;
@@ -18,9 +19,13 @@ import org.moeaframework.core.comparator.CrowdingComparator;
 import org.moeaframework.core.comparator.ParetoDominanceComparator;
 import org.moeaframework.core.operator.GAVariation;
 import org.moeaframework.core.operator.TournamentSelection;
-import org.moeaframework.core.operator.real.CPSD;
 import org.moeaframework.core.operator.real.PM;
 import org.moeaframework.core.operator.real.SBX;
+
+import lab.problem.ProblemFactory;
+import lab.algorithm.AlgorithmFactory;
+import lab.operator.RandomInitialization2;
+import lab.operator.real.CPSD;
 
 public class CPSDMain {
 	private static int npop = 100;
@@ -59,7 +64,7 @@ public class CPSDMain {
                  	/**
                  	 * Define optimization problem
                  	 */
-        			Problem problem = CustomProblemFactory.getProblem(pName, nobj, nvar, ncon);
+        			Problem problem = ProblemFactory.getProblem(pName, nobj, nvar, ncon, null);
         	
         			/**
         			 * Construct instrumenter
@@ -79,13 +84,13 @@ public class CPSDMain {
         			 * Create an initial random population.
         			 * The population size(=npop) and the number of digit(=ndigit) are specified here.
         			 */
-        			Initialization initialization = new CustomRandomInitialization(
+        			Initialization initialization = new RandomInitialization2(
         					problem,
         					npop,
         					fd);
         			
         			/**
-        			 * Define the crossover and mutation operator.
+        			 * Define the selection operator.
         			 */
         			TournamentSelection selection = new TournamentSelection(2, 
         					new ChainedComparator(
@@ -109,8 +114,10 @@ public class CPSDMain {
         			/**
         			 * Construct the algorithm
         			 */
-        			Algorithm algorithm = CustomAlgorithmFactory.getAlgorithm(
-        					aName, problem, selection, variation, initialization);
+        			Properties properties = new Properties();
+//        			properties.setProperty("use_archive", "1"); // when use archive, set this property.         			
+        			Algorithm algorithm = AlgorithmFactory.getAlgorithm(
+        					aName, problem, selection, variation, initialization, properties);
         			
         			/**
         			 * 

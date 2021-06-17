@@ -1,9 +1,12 @@
-package cpsd;
+package lab.algorithm;
+
+import java.util.Properties;
 
 import org.moeaframework.algorithm.MOEAD;
 import org.moeaframework.algorithm.NSGAII;
 import org.moeaframework.algorithm.ReferencePointNondominatedSortingPopulation;
 import org.moeaframework.core.Algorithm;
+import org.moeaframework.core.EpsilonBoxDominanceArchive;
 import org.moeaframework.core.Initialization;
 import org.moeaframework.core.NondominatedSortingPopulation;
 import org.moeaframework.core.PRNG;
@@ -16,24 +19,55 @@ import org.moeaframework.core.comparator.AggregateConstraintComparator;
 import org.moeaframework.core.comparator.ChainedComparator;
 import org.moeaframework.core.comparator.DominanceComparator;
 import org.moeaframework.core.operator.TournamentSelection;
+import org.moeaframework.core.spi.OperatorFactory;
+import org.moeaframework.util.TypedProperties;
 
-public class CustomAlgorithmFactory {
-	public static Algorithm getAlgorithm(String name, 
-			Problem problem, Selection selection, Variation variation, Initialization initialization) {
+import lab.algorithm.NSGAIIPSD;
+/**
+ * A provider of standard algorithms. 
+ */
+public class AlgorithmFactory {
+	public static Algorithm getAlgorithm(
+										String name, 
+										Problem problem, 
+										Selection selection, 
+										Variation variation, 
+										Initialization initialization, 
+										Properties properties
+										) {
 		name = name.toUpperCase();
-		
+		TypedProperties typedProperties = new TypedProperties(properties);
+
+		// Common Parameter
+		boolean usearchive = typedProperties.getBoolean("use_archive", false);		
+		double eps         = typedProperties.getDouble ("archive_eps", 0.01);
+		EpsilonBoxDominanceArchive archive = usearchive ? new EpsilonBoxDominanceArchive(eps) : null;
+
 		try {
-			if (name.startsWith("NSGAII")) {		
+			if (name.startsWith("NSGAII")) {
+				
 				return new NSGAII(
 						problem,
 						new NondominatedSortingPopulation(),
-						null, // no archive
+						archive,
 						selection,
 						variation,
 						initialization);
-			} else if(name.startsWith("NSGAIII")) {
-				int divisionsOuter = 12; // for 3objs (See newNSGAIII() in StandardAlgorithms.java)
-				int divisionsInner = 0;
+				
+			} else if (name.startsWith("NSGAIIPSD")) { // NSGAII with Parameter Space Discretization 
+				
+				return new NSGAIIPSD(
+						problem,
+						new NondominatedSortingPopulation(),
+						archive,
+						selection,
+						variation,
+						initialization); 
+				
+			}else if(name.startsWith("NSGAIII")) {
+				
+				int divisionsOuter = typedProperties.getInt("nsga3_divisions_outer", 12); // for 3objs (See newNSGAIII() in StandardAlgorithms.java)
+				int divisionsInner = typedProperties.getInt("nsga3_divisions_inner", 0);
 				
 				ReferencePointNondominatedSortingPopulation population = new ReferencePointNondominatedSortingPopulation(
 						problem.getNumberOfObjectives(), divisionsOuter, divisionsInner);
@@ -69,15 +103,17 @@ public class CustomAlgorithmFactory {
 				return new NSGAII(
 						problem,
 						population,
-						null, // no archive
+						archive,
 						selection,
 						variation,
-						initialization);				
+						initialization);
+				
 			} else if(name.startsWith("MOEAD")) {
-				int neighborhoodSize = 20;
-				int eta = 2;
-				double delta = 0.9;
-				int updateUtility = -1;
+				
+				int neighborhoodSize = typedProperties.getInt   ("moead_neighborhood_size", 20);
+				int eta              = typedProperties.getInt   ("moead_eta", 2);
+				double delta         = typedProperties.getDouble("moead_delta", 0.9);
+				int updateUtility    = typedProperties.getInt   ("moead_update_utility", -1);
 				
 				return new MOEAD(problem,
 						neighborhoodSize,
@@ -86,6 +122,7 @@ public class CustomAlgorithmFactory {
 						delta, 
 						eta,
 						updateUtility);
+
 			}else {
 				return null;
 			}

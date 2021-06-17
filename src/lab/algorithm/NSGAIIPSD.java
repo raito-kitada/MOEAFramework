@@ -1,4 +1,4 @@
-package sdpsd;
+package lab.algorithm;
 
 import org.moeaframework.algorithm.NSGAII;
 import org.moeaframework.core.EpsilonBoxDominanceArchive;
@@ -8,6 +8,8 @@ import org.moeaframework.core.Population;
 import org.moeaframework.core.Problem;
 import org.moeaframework.core.Selection;
 import org.moeaframework.core.Variation;
+
+import lab.operator.real.SDPSD;
 
 public class NSGAIIPSD extends NSGAII{
 

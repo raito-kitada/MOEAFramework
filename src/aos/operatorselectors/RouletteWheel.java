@@ -132,14 +132,9 @@ public class RouletteWheel extends AbstractOperatorSelector {
 
         // if the credits sum up to zero, apply uniform probabilty to  operators
         Iterator<Variation> iter = operators.iterator();
-        int obj = 3;
-        String Probname = "DTLZ2_"+ obj;
-        //String Probname = "WFG1_"+ obj;
-        //String Probname = "ZDT4";
-        //String name1 = "output16/Popsize100/"+Probname+"/prob.log";
-        //String name2 = "output16/Popsize100/"+Probname+"/qual.log";
-        String name1 = "output/test/probtest.log";
-        String name2 = "output/test/qualtest.log";
+
+        String name1 = "output/aos/probtest.log";
+        String name2 = "output/aos/qualtest.log";
         double alpha = 0.5;
         if (Math.abs(sum1) < Math.pow(10.0, -14)&&Math.abs(sum2) < Math.pow(10.0, -14)) {
             while (iter.hasNext()) {
