@@ -22,10 +22,10 @@ import org.moeaframework.core.operator.TournamentSelection;
 import org.moeaframework.core.operator.real.PM;
 import org.moeaframework.core.operator.real.SBX;
 
-import lab.problem.CustomProblemFactory;
-import lab.algorithm.CustomAlgorithmFactory;
-import lab.operator.CustomRandomInitialization;
-import lab.operator.real.CPSD;
+import lab.moea.algorithm.CustomAlgorithmFactory;
+import lab.moea.operator.CustomRandomInitialization;
+import lab.moea.operator.real.CPSD;
+import lab.moea.problem.CustomProblemFactory;
 
 public class CPSDMain {
 	private static int npop = 100;

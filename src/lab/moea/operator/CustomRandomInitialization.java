@@ -1,10 +1,14 @@
-package lab.operator;
+package lab.moea.operator;
 
 import org.moeaframework.core.Initialization;
 import org.moeaframework.core.Problem;
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.Variation;
 
+/**
+ * 
+ *
+ */
 public class CustomRandomInitialization implements Initialization {
 
 	/**

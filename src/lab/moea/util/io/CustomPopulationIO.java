@@ -1,4 +1,4 @@
-package lab.util.io;
+package lab.moea.util.io;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,10 +12,19 @@ import java.util.logging.Logger;
 
 import org.moeaframework.analysis.collector.Accumulator;
 import org.moeaframework.analysis.plot.Plot;
+import org.moeaframework.core.PopulationIO;
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.variable.RealVariable;
 
-public class SolutionWriter {
+public class CustomPopulationIO {
+
+	/**
+	 * Private constructor to prevent instantiation.
+	 */	
+	private CustomPopulationIO() {
+		super();
+	}
+	
 	
 //	private static String path = "output/";
 //	private static BufferedWriter history;

@@ -25,7 +25,8 @@ import org.moeaframework.core.Algorithm;
 import org.moeaframework.core.Problem;
 import org.moeaframework.core.Settings;
 import org.moeaframework.core.Solution;
-import org.moeaframework.util.ParallelEvaluator;
+
+import lab.moea.util.ParallelEvaluator;
 
 /**
  * Abstract class providing default implementations for several

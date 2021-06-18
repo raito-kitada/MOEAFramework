@@ -1,4 +1,4 @@
-package lab.algorithm;
+package lab.moea.algorithm;
 
 import java.util.Properties;
 
@@ -20,12 +20,11 @@ import org.moeaframework.core.comparator.ChainedComparator;
 import org.moeaframework.core.comparator.DominanceComparator;
 import org.moeaframework.core.operator.TournamentSelection;
 import org.moeaframework.core.spi.AlgorithmFactory;
-import org.moeaframework.core.spi.OperatorFactory;
 import org.moeaframework.util.TypedProperties;
 
-import lab.algorithm.NSGAIIPSD;
 /**
- * A provider of standard algorithms. 
+ * A provider of algorithms with custom initialization.
+ * 
  */
 public class CustomAlgorithmFactory {
 	public static Algorithm getAlgorithm(
@@ -125,11 +124,17 @@ public class CustomAlgorithmFactory {
 						updateUtility);
 
 			} else {
+
 				return AlgorithmFactory.getInstance().getAlgorithm(
 						name, typedProperties.getProperties(), problem);
+
 			}
 		} catch (NumberFormatException e) {
-			return null;
+			System.out.println(e.getMessage());
+			e.getStackTrace();
+			System.exit(0);
 		}
+
+		return null;
 	}
 }

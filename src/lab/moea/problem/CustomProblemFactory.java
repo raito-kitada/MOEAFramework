@@ -1,4 +1,4 @@
-package lab.problem;
+package lab.moea.problem;
 
 import java.util.Properties;
 

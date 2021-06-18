@@ -1,4 +1,4 @@
-package lab.operator.real;
+package lab.moea.operator.real;
 
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.Variable;

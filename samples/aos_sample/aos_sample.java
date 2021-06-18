@@ -33,9 +33,9 @@ import aos.creditassignment.setimprovement.OffspringParetoFrontDominance;
 import aos.nextoperator.IOperatorSelector;
 import aos.operator.AOSVariation;
 import aos.operatorselectors.ProbabilityMatching;
-import lab.algorithm.CustomAlgorithmFactory;
-import lab.problem.CustomProblemFactory;
-import lab.util.StringUtil;
+import lab.moea.algorithm.CustomAlgorithmFactory;
+import lab.moea.problem.CustomProblemFactory;
+import lab.moea.util.StringUtil;
 import cpsd.SimplePIO;
 import cpsd.Util;
 
@@ -122,12 +122,12 @@ public class aos_sample {
         
         OperatorFactory of = OperatorFactory.getInstance();
         ArrayList<Variation> operators = new ArrayList<Variation>();
-        operators.add(of.getVariation("um", op_property, problem));
-        operators.add(of.getVariation("sbx+pm", op_property, problem));
-        operators.add(of.getVariation("de+pm", op_property, problem));
-        operators.add(of.getVariation("pcx+pm", op_property, problem));
-        operators.add(of.getVariation("undx+pm", op_property, problem));
-        operators.add(of.getVariation("spx+pm", op_property, problem));  
+        operators.add(of.getVariation("um"      , op_property, problem));
+        operators.add(of.getVariation("sbx+pm"  , op_property, problem));
+        operators.add(of.getVariation("de+pm"   , op_property, problem));
+        operators.add(of.getVariation("pcx+pm"  , op_property, problem));
+        operators.add(of.getVariation("undx+pm" , op_property, problem));
+        operators.add(of.getVariation("spx+pm"  , op_property, problem));  
 
         // create operator selector
         IOperatorSelector operatorSelector = new ProbabilityMatching(operators, 0.8, 0.1);//(operators, alpha, pmin)
@@ -139,7 +139,11 @@ public class aos_sample {
         ICreditAssignment creditAssignment4 = new OffspringParetoFrontDominance(1, 0);
         
         // create aos strategy 
-        AOSStrategy aosStrategy = new AOSStrategy(creditAssignment2, creditAssignment2, operatorSelector);
+        AOSStrategy aosStrategy = new AOSStrategy(
+        		creditAssignment2, 
+        		creditAssignment2, 
+        		operatorSelector
+        );
         
 		/**
 		 * Construct the algorithm

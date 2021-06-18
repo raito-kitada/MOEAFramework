@@ -1,4 +1,4 @@
-package org.moeaframework.util;
+package lab.moea.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,6 +1,14 @@
-package lab.util;
+package lab.moea.util;
 
 public class StringUtil {
+	
+	/**
+	 * Private constructor to prevent instantiation.
+	 */	
+	private StringUtil() {
+		super();
+	}
+	
 	private static String SEP = " ";
 	
 	public static void PrintStrings(String... strings) {
